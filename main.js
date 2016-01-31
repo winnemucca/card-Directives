@@ -34,7 +34,7 @@ angular
 			level: 1
 		}
 
-		$scope.driod1 = {
+		$scope.droid1 = {
 			name: 'R2-D2',
 			specifications: {
 				manufacturer: 'industrial automation',
@@ -100,12 +100,12 @@ angular
 			}
 		}
 	})
-	.directive('driodInfoCard', function() {
+	.directive('droidInfoCard', function() {
 		return {
 			restrict: 'E',
 			templateUrl: "droidInfoCard.html",
 			scope: {
-				driod: '=',
+				droid: '=',
 				initialCollapsed: '@collapsed'
 				// a simple data value
 			},
@@ -114,9 +114,9 @@ angular
 				$scope.collapsed = ($scope.initialCollapsed === 'true');
 
 				$scope.nextState = function() {
-					console.log('state', $scope.person)
-					$scope.person.level++;
-					$scope.person.level = $scope.person.level %4;
+					console.log('state', $scope.droid)
+					$scope.droid.level++;
+					$scope.droid.level = $scope.droid.level %4;
 				}
 				
 

@@ -3,11 +3,15 @@
 	<span state-display="droid.level droid-ok droid-warning droid-problem droid-error"> {{droid.name}}</span> </div>
 	<div class="panel-body" ng-hide="collapsed">
 		
-		<address></address>
+		<h4>Specifications</h4>
 
+		<ul>
+			<li>{{droid.specifications.manufacturer}}</li>
+			<li>{{droid.specifications.type}}</li>
+			<li>{{droid.specifications.productLine}}</li>
+
+		</ul>
 		
-		
-		<button ng-show="!droid.rank" class="btn btn-success" ng-click="knightMe(droid)">Knight me</button>
 		<button ng-click="nextState()" class="btn btn-primary"> Next state</button>
 	</div>
 
