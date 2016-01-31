@@ -1,0 +1,14 @@
+<div class="panel panel-primary">
+	<div class="panel-heading"  ng-click="collapse()">
+	<span state-display="droid.level droid-ok droid-warning droid-problem droid-error"> {{droid.name}}</span> </div>
+	<div class="panel-body" ng-hide="collapsed">
+		
+		<address></address>
+
+		
+		
+		<button ng-show="!droid.rank" class="btn btn-success" ng-click="knightMe(droid)">Knight me</button>
+		<button ng-click="nextState()" class="btn btn-primary"> Next state</button>
+	</div>
+
+</div>

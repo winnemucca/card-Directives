@@ -1,0 +1,18 @@
+.person-ok {
+
+}
+
+.person-warning {
+	background: yellow;
+}
+
+
+.person-problem {
+	background: orange;
+
+}
+
+.person-error {
+	background: red;
+
+}
