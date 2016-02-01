@@ -40,7 +40,8 @@ angular
 				manufacturer: 'industrial automation',
 				type: 'Astromech',
 				productLine: 'r2 series'
-			}
+			},
+			level: 2
 		}
 
 	})
@@ -58,6 +59,33 @@ angular
 					el.addClass(classes[newVal]);
 
 				});
+			}
+		}
+	})
+	.directive('userPanel', function() {
+		return {
+			restrict: 'E',
+			transclude: true,
+			templateUrl: 'userPanel.html',
+			scope: {
+				name: '@',
+				level: '=',
+				initialCollapsed: '@collapsed'
+			},
+			controller: function($scope) {
+				$scope.collapsed = ($scope.initialCollapsed === 'true');
+
+				$scope.nextState = function() {
+					console.log('state', $scope.droid)
+					$scope.droid.level++;
+					$scope.droid.level = $scope.droid.level %4;
+				}
+				
+
+				$scope.collapse = function() {
+					console.log('clicked')
+					$scope.collapsed = !$scope.collapsed;
+				}
 			}
 		}
 	})
@@ -111,19 +139,7 @@ angular
 			},
 			
 			controller: function($scope){
-				$scope.collapsed = ($scope.initialCollapsed === 'true');
-
-				$scope.nextState = function() {
-					console.log('state', $scope.droid)
-					$scope.droid.level++;
-					$scope.droid.level = $scope.droid.level %4;
-				}
 				
-
-				$scope.collapse = function() {
-					console.log('clicked')
-					$scope.collapsed = !$scope.collapsed;
-				}
 					// **** moved from remove friend directive
 				
 
