@@ -46,6 +46,13 @@ angular
 
 	})
 
+	// .factory('jediPolicy', function(){
+	// 	return advanceToKnight: function() {
+	// 		if(candidate.hasForce &&
+
+	// 			)	
+	// 	}
+	// })
 	.directive('stateDisplay', function() {
 		return {
 			restrict: 'A',
@@ -68,6 +75,7 @@ angular
 			transclude: true,
 			templateUrl: 'userPanel.html',
 			scope: {
+				// dont expect one way binding to change
 				name: '@',
 				level: '=',
 				initialCollapsed: '@collapsed'
@@ -75,15 +83,17 @@ angular
 			controller: function($scope) {
 				$scope.collapsed = ($scope.initialCollapsed === 'true');
 
-				$scope.nextState = function() {
-					console.log('state', $scope.droid)
-					$scope.droid.level++;
-					$scope.droid.level = $scope.droid.level %4;
+				$scope.nextState = function(evt) {
+					console.log('evt', evt);
+					evt.stopPropagation();
+					evt.preventDefault();
+					console.log('state', $scope.level)
+					$scope.level++;
+					$scope.level = $scope.level %4;
 				}
 				
 
 				$scope.collapse = function() {
-					console.log('clicked')
 					$scope.collapsed = !$scope.collapsed;
 				}
 			}
@@ -100,21 +110,10 @@ angular
 			},
 			
 			controller: function($scope){
-				$scope.collapsed = ($scope.initialCollapsed === 'true');
-
-				$scope.nextState = function() {
-					console.log('state', $scope.person)
-					$scope.person.level++;
-					$scope.person.level = $scope.person.level %4;
-				}
+				
 				$scope.knightMe = function(person) {
 					console.log('clicked knight')
 					person.rank = 'knight';
-				}
-
-				$scope.collapse = function() {
-					console.log('clicked')
-					$scope.collapsed = !$scope.collapsed;
 				}
 					// **** moved from remove friend directive
 				$scope.removeFriend = function(friend) {
